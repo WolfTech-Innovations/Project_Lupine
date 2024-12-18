@@ -1,0 +1,67 @@
+(module Lupine_CPU (layer F.Cu) (tedit 5A3F7B2F)
+
+  (fp_text reference U1 (at 0 20) (layer F.SilkS)
+
+    (effects (font (size 1 1) (thickness 0.15))))
+
+  (fp_text value Lupine_CPU (at 0 -20) (layer F.Fab)
+
+    (effects (font (size 1 1) (thickness 0.15))))
+
+  (fp_line (start -15 -15) (end 15 -15) (layer F.SilkS) (width 0.12))
+
+  (fp_line (start 15 -15) (end 15 15) (layer F.SilkS) (width 0.12))
+
+  (fp_line (start 15 15) (end -15 15) (layer F.SilkS) (width 0.12))
+
+  (fp_line (start -15 15) (end -15 -15) (layer F.SilkS) (width 0.12))
+
+
+
+  ; Define grid parameters
+
+  (pad 1 smd circle (at -10 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 1 "VCC"))
+
+  (pad 2 smd circle (at -8 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 2 "GND"))
+
+  (pad 3 smd circle (at -6 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 3 "CLK"))
+
+  (pad 4 smd circle (at -4 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 4 "RESET"))
+
+  (pad 5 smd circle (at -2 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 5 "DATA0"))
+
+  (pad 6 smd circle (at 0 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 6 "DATA1"))
+
+  (pad 7 smd circle (at 2 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 7 "ADDR0"))
+
+  (pad 8 smd circle (at 4 -10) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask) (net 8 "ADDR1"))
+
+
+
+  ; Add additional rows for a 10x10 grid as an example (expand as needed)
+
+  (pad 9 smd circle (at -10 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 10 smd circle (at -8 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 11 smd circle (at -6 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 12 smd circle (at -4 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 13 smd circle (at -2 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 14 smd circle (at 0 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 15 smd circle (at 2 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+  (pad 16 smd circle (at 4 -8) (size 0.6 0.6) (layers F.Cu F.Paste F.Mask))
+
+
+
+  ; Alignment marks and fiducials
+
+  (pad "" np_thru_hole circle (at -14 14) (size 1.5 1.5) (drill 1.0) (layers *.Mask))
+
+  (pad "" np_thru_hole circle (at 14 -14) (size 1.5 1.5) (drill 1.0) (layers *.Mask))
+
+)
