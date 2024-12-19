@@ -1,0 +1,21 @@
+(Lupine CPU Pinout)
+-------------------------------------------------------
+| Pin Name           | Function                         |
+-------------------------------------------------------
+| Vcc               | Core Power Supply                |
+| VccIO             | I/O Power Supply                 |
+| Vcore             | Core Voltage                     |
+| GND               | Ground Pins                      |
+| D0-DX (Data Bus)  | 64-bit Memory/Cache Data         |
+| A0-AX (Address)   | Address Lines (DDR4, Cache)      |
+| R/W (Control)     | Read/Write Control               |
+| CLK               | System Clock Input               |
+| PLL               | Phase-Locked Loop Control       |
+| L3_Cache           | L3 Cache Access                  |
+| L2_Cache           | L2 Cache Bus                     |
+| PCIe_TX0-15        | PCIe Differential Pairs (16 lanes)|
+| USB, SATA, etc.    | I/O Interface Pins               |
+| Reset             | Reset Pin                        |
+| Sleep             | Sleep State Control              |
+| Debug (JTAG)      | Debug Interface (JTAG)           |
+-------------------------------------------------------
