@@ -1,0 +1,89 @@
+(kicad_sch 5.1)
+  (general)
+    (date "2024-12-19")
+    (author "AI Generated")
+    (title "Lupine CPU Architecture")
+    (version 1)
+    (last_author "WolfTech Innovations")
+  (end_of_general)
+
+  (lib_strings)
+    (string "Lupine_CPU")
+  (end_of_lib_strings)
+
+  (components)
+    <!-- CPU Cores -->
+    <component "Core1" "U1" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+    <component "Core2" "U2" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+    <component "Core3" "U3" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+    <component "Core4" "U4" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+    <component "Core5" "U5" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+    <component "Core6" "U6" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal") />
+
+    <!-- Cache Block -->
+    <component "L3_Cache" "U7" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "L2 Cache Access") (pin "4" "Core Communication") (pin "5" "Cache Access") />
+    <component "L2_Cache1" "U8" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core1 Cache Access") (pin "4" "Core Communication") />
+    <component "L2_Cache2" "U9" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core2 Cache Access") (pin "4" "Core Communication") />
+    <component "L1_Cache1" "U10" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core1 Cache Access") (pin "4" "Data Fetch") />
+    <component "L1_Cache2" "U11" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core2 Cache Access") (pin "4" "Data Fetch") />
+
+    <!-- Memory Interface -->
+    <component "DDR4_Controller" "U12" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Memory Data Bus") (pin "4" "Memory Address Bus") (pin "5" "Cache Connection") />
+
+    <!-- Power Management -->
+    <component "Power_Management" "U13" (pin "1" "Vcore") (pin "2" "Vcc") (pin "3" "VccIO") (pin "4" "Clock Control") (pin "5" "Voltage Regulators") />
+
+    <!-- Clocking & Timing -->
+    <component "Clock_PLL" "U14" (pin "1" "Vcc") (pin "2" "CLK_IN") (pin "3" "CLK_OUT") (pin "4" "Core Sync Signal") />
+
+    <!-- I/O Interface -->
+    <component "PCIe_Controller" "U15" (pin "1" "Vcc") (pin "2" "PCIe Lanes") (pin "3" "Data Transfer") (pin "4" "Core Communication") />
+    <component "USB_Controller" "U16" (pin "1" "Vcc") (pin "2" "USB Data Lines") (pin "3" "Peripheral Communication") />
+    <component "SATA_Controller" "U17" (pin "1" "Vcc") (pin "2" "SATA Data Lines") (pin "3" "Peripheral Communication") />
+
+    <!-- Debug & Control -->
+    <component "JTAG_Debug" "U18" (pin "1" "GND") (pin "2" "TDI") (pin "3" "TDO") (pin "4" "TRST") (pin "5" "TMS") (pin "6" "TCK") />
+    <component "Reset_Pin" "U19" (pin "1" "GND") (pin "2" "RESET") />
+
+  (end_of_components)
+
+  (nets)
+    <!-- Core to Cache Connection -->
+    (net "Core1_L2_Cache" (node "Core1" "pin 6") (node "L2_Cache1" "pin 3"))
+    (net "Core2_L2_Cache" (node "Core2" "pin 6") (node "L2_Cache2" "pin 3"))
+    (net "Core3_L3_Cache" (node "Core3" "pin 6") (node "L3_Cache" "pin 3"))
+    (net "Core4_L3_Cache" (node "Core4" "pin 6") (node "L3_Cache" "pin 3"))
+    
+    <!-- Memory Interface -->
+    (net "DDR4_Connection" (node "DDR4_Controller" "pin 3") (node "L3_Cache" "pin 4"))
+
+    <!-- Power Distribution -->
+    (net "Vcore_Power" (node "Power_Management" "pin 1") (node "Core1" "pin 2") (node "Core2" "pin 2") (node "Core3" "pin 2") (node "Core4" "pin 2"))
+    (net "Vcc_Power" (node "Power_Management" "pin 2") (node "L2_Cache1" "pin 1") (node "L3_Cache" "pin 1"))
+
+    <!-- I/O Connections -->
+    (net "PCIe_Lanes" (node "PCIe_Controller" "pin 2") (node "Core1" "pin 7"))
+    (net "USB_Lanes" (node "USB_Controller" "pin 2") (node "Core2" "pin 7"))
+  (end_of_nets)
+
+  (symbols)
+    <!-- Core Block Symbols -->
+    <symbol "Core1" "U1" "Core Symbol" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal"))
+    <symbol "Core2" "U2" "Core Symbol" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal"))
+    <symbol "Core3" "U3" "Core Symbol" (pin "1" "GND") (pin "2" "Vcore") (pin "3" "Instruction Fetch") (pin "4" "ALU Output") (pin "5" "FPU Output") (pin "6" "Cache Access") (pin "7" "Clock Signal"))
+    
+    <!-- Cache Symbols -->
+    <symbol "L3_Cache" "U7" "Cache Symbol" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "L2 Cache Access") (pin "4" "Core Communication") (pin "5" "Cache Access"))
+    <symbol "L2_Cache1" "U8" "Cache Symbol" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core1 Cache Access") (pin "4" "Core Communication"))
+    <symbol "L2_Cache2" "U9" "Cache Symbol" (pin "1" "Vcc") (pin "2" "GND") (pin "3" "Core2 Cache Access") (pin "4" "Core Communication"))
+
+    <!-- Power, Clocking, I/O, Debug Symbols -->
+    <symbol "Power_Management" "U13" "Power Management Symbol" (pin "1" "Vcore") (pin "2" "Vcc") (pin "3" "VccIO") (pin "4" "Clock Control") (pin "5" "Voltage Regulators"))
+    <symbol "Clock_PLL" "U14" "Clock Symbol" (pin "1" "Vcc") (pin "2" "CLK_IN") (pin "3" "CLK_OUT") (pin "4" "Core Sync Signal"))
+    <symbol "PCIe_Controller" "U15" "PCIe Symbol" (pin "1" "Vcc") (pin "2" "PCIe Lanes") (pin "3" "Data Transfer") (pin "4" "Core Communication"))
+    <symbol "USB_Controller" "U16" "USB Symbol" (pin "1" "Vcc") (pin "2" "USB Data Lines") (pin "3" "Peripheral Communication"))
+    <symbol "SATA_Controller" "U17" "SATA Symbol" (pin "1" "Vcc") (pin "2" "SATA Data Lines") (pin "3" "Peripheral Communication"))
+    <symbol "JTAG_Debug" "U18" "Debug Symbol" (pin "1" "GND") (pin "2" "TDI") (pin "3" "TDO") (pin "4" "TRST") (pin "5" "TMS") (pin "6" "TCK"))
+    <symbol "Reset_Pin" "U19" "Reset Symbol" (pin "1" "GND") (pin "2" "RESET"))
+  (end_of_symbols)
+(end_of_sch)
